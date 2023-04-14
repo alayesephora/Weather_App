@@ -11,7 +11,7 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   REST.Response.Adapter, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo,
-  System.ImageList, FMX.ImgList;
+  System.ImageList, FMX.ImgList,Unit1;
 
 type
   TForm4 = class(TForm)
@@ -36,10 +36,12 @@ type
     Text1: TText;
     ImageControl1: TImageControl;
     procedure Timer1Timer(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
   private
     { Déclarations privées }
   public
     { Déclarations publiques }
+    ville : string;
   end;
 
 var
@@ -48,9 +50,16 @@ var
 implementation
 
 {$R *.fmx}
+procedure TForm4.Button4Click(Sender: TObject);
+begin
+   ville := Edit1.Text;
+   if length ( ville) > 0 then
+   begin
+      form1.show;
+      form1.nametown := ville;
+   end;
 
-
-
+end;
 
 procedure TForm4.Timer1Timer(Sender: TObject);
 begin

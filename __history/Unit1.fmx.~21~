@@ -1,0 +1,69 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Align = Contents
+    Size.Width = 640.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 476.000000000000000000
+  end
+  object ComboBox1: TComboBox
+    Align = Top
+    Items.Strings = (
+      'Alger'
+      'London')
+    Size.Width = 640.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 8
+  end
+  object Rectangle1: TRectangle
+    Position.X = 544.000000000000000000
+    Position.Y = 280.000000000000000000
+    Size.Width = 50.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object RESTClient1: TRESTClient
+    BaseURL = 'http://api.weatherapi.com/v1/current.json'
+    Params = <>
+    Left = 544
+    Top = 192
+  end
+  object RESTRequest1: TRESTRequest
+    AssignedValues = [rvConnectTimeout, rvReadTimeout]
+    Client = RESTClient1
+    Params = <
+      item
+        Name = 'key'
+        Value = 'e3a4e444af8148e5bd590412230704'
+      end
+      item
+        Name = 'q'
+        Value = 'London'
+      end
+      item
+        Name = 'aqi'
+        Value = 'yes'
+      end>
+    Response = RESTResponse1
+    Left = 552
+    Top = 120
+  end
+  object RESTResponse1: TRESTResponse
+    Left = 544
+    Top = 288
+  end
+end
