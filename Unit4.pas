@@ -55,8 +55,9 @@ begin
    ville := Edit1.Text;
    if length ( ville) > 0 then
    begin
-      form1.show;
       form1.nametown := ville;
+      form1.showModal;
+      form4.close;
    end;
 
 end;
