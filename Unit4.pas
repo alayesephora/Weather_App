@@ -11,7 +11,7 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   REST.Response.Adapter, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo,
-  System.ImageList, FMX.ImgList,Unit1;
+  System.ImageList, FMX.ImgList,Unit1,Unit2;
 
 type
   TForm4 = class(TForm)
@@ -56,7 +56,7 @@ begin
    if length ( ville) > 0 then
    begin
       form1.nametown := ville;
-      form1.showModal;
+      form2.showModal;
       form4.close;
    end;
 
