@@ -1,0 +1,104 @@
+unit Unit1;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
+  FMX.Controls.Presentation, FMX.Edit, FMX.StdCtrls, REST.Types, REST.Client,
+  Data.Bind.Components, Data.Bind.ObjectScope, FMX.Memo.Types, FMX.ScrollBox,
+  FMX.Memo, FMX.ListBox,System.JSON, System.ImageList,FMX.ImgList,IdHTTP,
+  Vcl.Imaging.pngimage;
+
+type
+  TForm1 = class(TForm)
+    RESTClient1: TRESTClient;
+    RESTRequest1: TRESTRequest;
+    RESTResponse1: TRESTResponse;
+    Memo1: TMemo;
+    Button1: TButton;
+    température: TLabel;
+    wind: TLabel;
+    cloud: TLabel;
+    humidity: TLabel;
+    Button2: TButton;
+    texte: TLabel;
+    localisation: TText;
+    ImageList1: TImageList;
+    icon: TImageControl;
+    Text2: TText;
+    Rectangle5: TRectangle;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+
+
+  private
+
+    { Déclarations privées }
+  public
+    { Déclarations publiques }
+    nametown : string;
+
+  end;
+
+var
+  Form1: TForm1;
+  weather,MainJSON : TJSONObject;
+  HTTP: TIdHTTP;
+  PNG: TPngImage;
+  iconBitmap : TBitmap;
+  dioxydeazote,MonoxydeCarbone,trioxygene,dioxydeSodium,icone : string;
+
+implementation
+
+{$R *.fmx}
+{$R *.Surface.fmx MSWINDOWS}
+
+procedure TForm1.Button1Click(Sender: TObject);
+
+begin
+    Button1.Visible := False;
+    température.Visible := True;
+    Rectangle5.Visible := True;
+    wind.Visible := True;
+    cloud.Visible := True;
+    humidity.Visible := True;
+    Button2.Visible := True;
+    texte.Visible := True;
+    localisation.Visible := True;
+    Image4.Visible := True;
+    Image2.Visible := True;
+    Image3.Visible := True;
+
+
+  RESTRequest1.Params.ParameterByName('q').Value := nametown;
+  RESTRequest1.Execute;
+  Memo1.Text := RESTResponse1.JSONText;
+
+//  weather := TJSONObject.ParseJSONValue(RESTResponse1.Content)as TJSONObject;
+//  MainJSON := weather.GetValue <TJSONObject>('current');
+//  texte.Text := MainJSON.GetValue <string> ('condition.text');
+//  wind.Text := MainJSON.GetValue <string> ('wind_kph');
+//  température.Text := MainJSON.GetValue <string> ('temp_c');
+//  cloud.Text := MainJSON.GetValue <string> ('cloud');
+//  dioxydeazote :=MainJSON.GetValue <string> ('air_quality.no2');
+//  humidity.Text := MainJSON.GetValue <string> ('humidity');
+//  MainJSON := weather.GetValue <TJSONObject>('location');
+//  localisation.Text := MainJSON.GetValue <string> ('name')+ ','+
+//  MainJSON.GetValue <string> ('region')+','+ MainJSON.GetValue <string> ('country');
+
+
+
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+  Close;
+end;
+
+
+
+end.

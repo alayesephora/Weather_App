@@ -72,10 +72,13 @@ begin
     Image4.Visible := True;
     Image2.Visible := True;
     Image3.Visible := True;
+    Text2.Visible := True;
 
 
   RESTRequest1.Params.ParameterByName('q').Value := nametown;
   RESTRequest1.Execute;
+
+
   weather := TJSONObject.ParseJSONValue(RESTResponse1.Content)as TJSONObject;
   MainJSON := weather.GetValue <TJSONObject>('current');
   texte.Text := MainJSON.GetValue <string> ('condition.text');
